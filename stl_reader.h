@@ -628,7 +628,14 @@ bool ReadStlFile_ASCII(const char* filename,
 
 	solidRangesOut.push_back(static_cast<index_t> (trisOut.size() / 3));
 
-	RemoveDoubles (coordsOut, trisOut, coordsWithIndex);
+	//RemoveDoubles (coordsOut, trisOut, coordsWithIndex);
+	coordsOut.reserve(coordsWithIndex.size());
+	for (size_t i = 0; i < coordsWithIndex.size(); ++i)
+	{
+		coordsOut.push_back(coordsWithIndex[i][0]);
+		coordsOut.push_back(coordsWithIndex[i][1]);
+		coordsOut.push_back(coordsWithIndex[i][2]);
+	}
 
 	return true;
 }
@@ -694,7 +701,14 @@ bool ReadStlFile_BINARY(const char* filename,
 	solidRangesOut.push_back(0);
 	solidRangesOut.push_back(static_cast<index_t> (trisOut.size() / 3));
 
-	RemoveDoubles (coordsOut, trisOut, coordsWithIndex);
+	//RemoveDoubles (coordsOut, trisOut, coordsWithIndex);
+	coordsOut.reserve(coordsWithIndex.size());
+	for (size_t i = 0; i < coordsWithIndex.size(); ++i)
+	{
+		coordsOut.push_back(coordsWithIndex[i][0]);
+		coordsOut.push_back(coordsWithIndex[i][1]);
+		coordsOut.push_back(coordsWithIndex[i][2]);
+	}
 
 	return true;
 }
